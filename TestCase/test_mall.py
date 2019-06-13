@@ -4,7 +4,6 @@ from time import sleep
 
 import pytest
 
-from TestCase.pages.order_list import order_list
 
 
 class Test_mall():
@@ -12,15 +11,14 @@ class Test_mall():
     @pytest.mark.fahuo
     def test_fahuo(self,base):
         base.driver.get("http://192.168.60.132/#/oms/order")
-        orders = order_list(base)
-        #点击订单状态
-        orders.click_order_status_a()
-        #点击待发货
-        orders.click_to_be_delivered()
-        #点击查询搜索
-        orders.click_query_search()
-        #点击第一笔订单的订单发货
-        orders.click_order_delivery()
+        #点击订单状态 //label[contains(text(),'订单状态：')]/following-sibling::div//input
+        base.click("点击订单状态",'''//label[contains(text(),'订单状态：')]/following-sibling::div//input''')
+        #点击待发货 //span[contains(text(),'待发货')]
+        base.click("点击待发货",'''//span[contains(text(),'待发货')]''')
+        #点击查询搜索 //span[contains(text(),'查询搜索')]
+        base.click("点击查询搜索",'''//span[contains(text(),'查询搜索')]''')
+        #点击第一笔订单的订单发货 //tbody/tr[1]/td[10]//span[contains(text(),'订单发货')]
+        base.click("点击第一笔订单的订单发货",'''//tbody/tr[1]/td[10]//span[contains(text(),'订单发货')]''')
         assert "发货列表" in base.driver.page_source
         #点击物流公司 //tbody/tr[1]/td[6]//input
         base.click("点击物流公司",'''//tbody/tr[1]/td[6]//input''')
