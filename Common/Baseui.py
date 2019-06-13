@@ -23,6 +23,7 @@ def shot(func):
                 break
             except :
                 if i == 3:
+                    allure.attach(args[0].driver.get_screenshot_as_png(), args[1] + '之后', allure.attachment_type.PNG)
                     raise
                 i += 1
         allure.attach(args[0].driver.get_screenshot_as_png(), args[1] + '之后', allure.attachment_type.PNG)
@@ -39,17 +40,7 @@ class baseUI():
 
 
     def local_element(self,xpath):
-        i = 1
-        d=None
-        while(i<=3):
-            try:
-                d=WebDriverWait(self.driver, 5, 0.5).until(EC.presence_of_element_located((By.XPATH, xpath)))
-                break
-            except:
-                if i == 3:
-                    raise
-                i=i+1
-        return d
+        return WebDriverWait(self.driver, 5, 0.5).until(EC.presence_of_element_located((By.XPATH, xpath)))
 
     @shot
     def send_keys(self,step,xpath,text):

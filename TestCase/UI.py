@@ -101,12 +101,12 @@ def iframe_demo(driver):
 
 
 if __name__ == '__main__':
-    driver = webdriver.Chrome('../chromedriver/chromedriver.exe')
-    driver.maximize_window()
+    # driver = webdriver.Chrome('../chromedriver/chromedriver.exe')
+    # driver.maximize_window()
     # iframe_demo(driver)
 
     # driver.get 打开一个指定网页
-    driver.get("http://localhost:8082/xuepl/demo1.html")
+    # driver.get("http://localhost:8082/xuepl/demo1.html")
 
     # # 等待几秒
     # time.sleep(2)
@@ -134,11 +134,17 @@ if __name__ == '__main__':
     # # 刷新
     # driver.refresh()
     # time.sleep(3)
-    alter(driver)
+    # alter(driver)
 
 
     # 关闭浏览器
-    driver.quit()
+    # driver.quit()
     # driver.close()  也可以关闭浏览器,但是无法关闭驱动程序 ,一般用quit ,关闭的更彻底
-
+    a = 'adf,gjkjk,ckokoa,sjodjo'
+    #find 查找
+    print(a.find("ackokoa"))
+    #split 切割
+    print(a.split(','))
+    #replace 替换
+    print(a.replace('a','1'))
     pass
