@@ -8,8 +8,13 @@ from selenium import webdriver
 from Common.Baseui import baseUI
 
 
+
 @pytest.fixture(scope="session")
 def base():
+    #fixture装饰器可以设置前置后置步骤
+    #返回值存到了方法名中
+    #测试用例中，根据方法名来使用该方法的返回值
+
     driver_path = os.path.join(os.path.dirname(__file__), "../chromedriver/chromedriver.exe")
     # 打开浏览器
     dr = webdriver.Chrome(driver_path)
